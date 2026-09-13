@@ -1,0 +1,49 @@
+.section {
+  padding: 24px 0 20px 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text-primary, #222222);
+  margin: 0;
+}
+
+.actionsRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary, #222222);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.actionBtn:hover {
+  background-color: var(--color-bg-hover, #f7f7f7);
+}
+
+.actionText {
+  color: #222222;
+}

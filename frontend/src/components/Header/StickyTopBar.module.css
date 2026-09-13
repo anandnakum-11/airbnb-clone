@@ -1,0 +1,177 @@
+.stickyBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--color-border-light, #ebebeb);
+  z-index: 150;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 150;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 var(--space-8, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Left Navigation Tabs */
+.navTabs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6, 24px);
+  height: 100%;
+}
+
+.tabButton {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  font-size: var(--font-size-sm, 14px);
+  font-weight: 500;
+  color: #717171;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+  outline: none;
+}
+
+.tabButton:hover {
+  color: #222222;
+}
+
+.tabButton:focus-visible {
+  outline: 2px solid #222222;
+  outline-offset: -2px;
+}
+
+.tabActive {
+  font-weight: 600;
+  color: #222222;
+}
+
+.tabActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #222222;
+  border-radius: 2px 2px 0 0;
+}
+
+/* Right Section: Price & CTA */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4, 16px);
+}
+
+.priceRatingInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.priceAmount {
+  font-size: var(--font-size-base, 16px);
+  font-weight: 700;
+  color: #222222;
+}
+
+.pricePeriod {
+  font-size: var(--font-size-xs, 12px);
+  color: #222222;
+  font-weight: 500;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-xs, 12px);
+  color: #222222;
+  margin-top: 2px;
+}
+
+.starIcon {
+  color: #222222;
+  display: inline-flex;
+}
+
+.ratingVal {
+  font-weight: 600;
+}
+
+.dot {
+  color: #717171;
+}
+
+.reviewsText {
+  color: #717171;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.reviewsText:hover {
+  color: #222222;
+}
+
+/* Reserve CTA Button */
+.reserveButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  color: #ffffff;
+  font-size: var(--font-size-base, 16px);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-md, 8px);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease, filter 0.15s ease;
+  white-space: nowrap;
+}
+
+.reserveButton:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+.reserveButton:active {
+  transform: scale(0.98);
+}

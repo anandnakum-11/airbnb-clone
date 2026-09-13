@@ -1,0 +1,494 @@
+/* ==========================================================================
+   Gallery Grid (5-Photo Mosaic)
+   ========================================================================== */
+
+.gallerySection {
+  position: relative;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.gridContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  height: 480px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Left Hero Photo */
+.heroItem {
+  height: 100%;
+}
+
+.heroItem .imageWrapper {
+  border-top-left-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+/* Right 2x2 Quad Grid */
+.quadGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--space-2);
+  height: 100%;
+}
+
+.topRightCorner .imageWrapper {
+  border-top-right-radius: var(--radius-lg);
+}
+
+.bottomRightCorner .imageWrapper {
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+/* Photo Card */
+.photoCard {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+}
+
+.photoCard:focus-visible .imageWrapper {
+  outline: 3px solid var(--color-brand);
+  outline-offset: -3px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color var(--transition-normal);
+  pointer-events: none;
+}
+
+.photoCard:hover .imageOverlay {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.photoCard:hover .image {
+  transform: scale(1.02);
+}
+
+/* Floating "Show all photos" Button */
+.showAllButton {
+  position: absolute;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 7px 15px;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-normal);
+  z-index: 5;
+}
+
+.showAllButton:hover {
+  background-color: var(--color-bg-secondary);
+  transform: scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.showAllButton:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Photo Tour Modal (Show all photos view) matching Image 2 & Image 4
+   ========================================================================== */
+
+.tourBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: var(--color-bg-primary);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Header */
+.tourHeader {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-8);
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border-light);
+  height: 64px;
+}
+
+.tourHeaderLeft,
+.tourHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 80px;
+}
+
+.tourHeaderCenter {
+  flex: 1;
+  text-align: center;
+}
+
+.tourHeaderTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.tourBackBtn,
+.tourActionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-fast);
+}
+
+.tourBackBtn:hover,
+.tourActionBtn:hover {
+  background-color: var(--color-bg-hover);
+}
+
+/* Scrollable Container */
+.tourScrollableBody {
+  flex: 1;
+  max-width: var(--max-width-wide);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-10) var(--space-20);
+}
+
+/* Top Rooms Thumbnail Selector Grid matching Image 2 */
+.topRoomsSection {
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.topRoomsGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: var(--space-4);
+  row-gap: var(--space-6);
+}
+
+.roomThumbCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  text-align: left;
+  outline: none;
+  cursor: pointer;
+}
+
+.roomThumbCard:focus-visible .roomThumbImageWrap {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}
+
+.roomThumbImageWrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-light);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.roomThumbCard:hover .roomThumbImageWrap {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.roomThumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.roomThumbCard:hover .roomThumbImg {
+  transform: scale(1.05);
+}
+
+.roomThumbLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+/* Room By Room Sections matching Image 2 & 4 */
+.roomSectionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.roomSectionBlock {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 48px;
+  align-items: flex-start;
+  scroll-margin-top: 100px;
+}
+
+.roomMetaColumn {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-right: var(--space-4);
+}
+
+.roomSectionTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.roomAmenitiesText {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Right Photos Column */
+.roomPhotosColumn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.roomPhotoItem {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-light);
+  transition: all var(--transition-normal);
+  aspect-ratio: 16 / 11;
+  outline: none;
+}
+
+.fullWidthPhoto {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 10;
+}
+
+.halfWidthPhoto {
+  grid-column: span 1;
+  aspect-ratio: 16 / 11;
+}
+
+.roomPhotoItem:hover {
+  box-shadow: var(--shadow-hover);
+  transform: scale(1.01);
+}
+
+.roomPhotoItem:focus-visible {
+  outline: 3px solid var(--color-brand);
+}
+
+.roomPhotoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.roomPhotoItem:hover .roomPhotoImg {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   Lightbox Modal (Light Version) matching Image 3
+   ========================================================================== */
+
+.lightboxBackdropLight {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.lightboxTopBarLight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-8);
+  height: 64px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid transparent;
+  z-index: 10;
+}
+
+.lightboxGridIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.lightboxGridIconBtn:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.lightboxCenterTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.lightboxRightControls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.lightboxCounterText {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.lightboxCloseIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.lightboxCloseIconBtn:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.lightboxStageLight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-8);
+  position: relative;
+  overflow: hidden;
+  background-color: #FFFFFF;
+}
+
+.lightboxCircleNavBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-medium);
+  color: var(--color-text-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: all var(--transition-normal);
+  z-index: 10;
+}
+
+.lightboxCircleNavBtn:hover {
+  background-color: var(--color-bg-secondary);
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+.lightboxCircleNavBtn:active {
+  transform: scale(0.96);
+}
+
+.lightboxImageContainerLight {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-6);
+  user-select: none;
+}
+
+.lightboxImageElement {
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  animation: zoomFade 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomFade {
+  from {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,159 @@
+.header {
+  position: relative;
+  z-index: 50;
+  background-color: var(--color-bg-primary, #ffffff);
+  border-bottom: 1px solid var(--color-border-light, #ebebeb);
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width-wide, 1280px);
+  margin: 0 auto;
+  padding: 0 var(--space-10, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand Logo */
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #FF385C;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logoText {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  color: #FF385C;
+  font-family: -apple-system, BlinkMacSystemFont, 'Circular', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* Center Pill Search Bar */
+.searchBar {
+  display: flex;
+  align-items: center;
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 8px 7px 16px;
+  border: 1px solid #ebebeb;
+  border-radius: 32px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.searchButton:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+}
+
+.houseIcon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.searchItemBold {
+  font-weight: 600;
+  color: #222222;
+  font-size: 14px;
+}
+
+.searchItemMuted {
+  color: #717171;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.searchDivider {
+  width: 1px;
+  height: 24px;
+  background-color: #ebebeb;
+}
+
+.searchIconCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #FF385C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+  flex-shrink: 0;
+}
+
+/* Right Menu Controls */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hostButton {
+  padding: 10px 14px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222222;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.hostButton:hover {
+  background-color: #f7f7f7;
+}
+
+.globeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f7f7f7;
+  border: none;
+  color: #222222;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.globeButton:hover {
+  background-color: #ebebeb;
+}
+
+.menuCircleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f7f7f7;
+  border: none;
+  color: #222222;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.menuCircleButton:hover {
+  background-color: #ebebeb;
+}

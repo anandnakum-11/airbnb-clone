@@ -1,0 +1,206 @@
+.calendarSection {
+  padding: 32px 0;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 4px 0;
+  line-height: 26px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #717171;
+  margin: 0 0 24px 0;
+  line-height: 18px;
+}
+
+.monthsContainer {
+  display: flex;
+  gap: 32px;
+  max-width: 660px;
+}
+
+.monthBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.monthHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.monthTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  flex: 1;
+}
+
+.navBtn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: background-color 0.15s ease;
+}
+
+.navBtn:hover {
+  background-color: #F7F7F7;
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.weekdaysRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.weekday {
+  font-size: 12px;
+  font-weight: 600;
+  color: #717171;
+  padding: 4px 0;
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 2px;
+}
+
+.dayCellWrapper {
+  position: relative;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inRangeBg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #F7F7F7;
+  z-index: 1;
+}
+
+.rangeStartBg {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  left: 0;
+}
+
+.rangeEndBg {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  right: 0;
+}
+
+.dayBtn {
+  position: relative;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease, background-color 0.15s ease;
+}
+
+.dayBtn:hover:not(:disabled):not(.selectedDay) {
+  border: 1px solid #222222;
+  background-color: #FFFFFF;
+}
+
+.selectedDay {
+  background-color: #222222 !important;
+  color: #FFFFFF !important;
+}
+
+.disabledDay {
+  color: #CCCCCC !important;
+  cursor: not-allowed !important;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+.pastDay {
+  color: #DDDDDD !important;
+  cursor: not-allowed !important;
+  font-weight: 400;
+}
+
+.footerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  max-width: 660px;
+}
+
+.keyboardBtn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  border-radius: 4px;
+}
+
+.keyboardBtn:hover {
+  background-color: #F7F7F7;
+}
+
+.clearDatesBtn {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.clearDatesBtn:hover {
+  background-color: #F7F7F7;
+}
+
+@media (max-width: 768px) {
+  .monthsContainer {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
